@@ -78,8 +78,6 @@ public class Fruit implements Serializable {
         this.type = type;
         this.quantity = quantity;
         this.price = price;
-        this.creationDate = creationDate;
-        this.updateDate = updateDate;
     }
 
     //toString method
@@ -90,7 +88,7 @@ public class Fruit implements Serializable {
                 + creationDate + ", updateDate=" + updateDate + "]";
     }
 
-
-    
+    // Better not ask me why this is here...
+    public Fruit(){}
 
 }
