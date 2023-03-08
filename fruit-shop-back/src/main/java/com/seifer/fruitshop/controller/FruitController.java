@@ -20,6 +20,7 @@ public class FruitController {
     private FruitRepo fruitRepo;
 
     @GetMapping()
+    // implement method for do list fonr size certain quantity
     public List<Fruit> getAllFruits() {
         return fruitRepo.findAll();
     }

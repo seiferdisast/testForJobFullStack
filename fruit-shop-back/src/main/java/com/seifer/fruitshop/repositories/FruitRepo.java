@@ -7,5 +7,5 @@ import com.seifer.fruitshop.model.Fruit;
 
 @Repository
 public interface FruitRepo extends JpaRepository<Fruit, Long> {
-    //Fruit findByType(String type);
+    Fruit findByType(String type);
 }
