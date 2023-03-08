@@ -36,6 +36,12 @@ public class OrderController {
         for (OrderRequestBody orderRequestBody : orderOfFruit) {
             String typeFruit = orderRequestBody.getType();
             Fruit fruit = fruitRepo.findByType(typeFruit);
+            if (fruit == null) {
+                return new ResponseEntity<>("Not fruit found", HttpStatus.BAD_REQUEST);
+            }
+            if (fruit.getQuantity() < orderRequestBody.getQuantity()) {
+                return new ResponseEntity<>("Not enough quantity", HttpStatus.BAD_REQUEST);
+            }
             Double pricePerUnit = fruit.getPrice();
             total += pricePerUnit * orderRequestBody.getQuantity();
             fruit.setQuantity(fruit.getQuantity() - orderRequestBody.getQuantity());
