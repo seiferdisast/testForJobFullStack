@@ -23,10 +23,10 @@ public class Fruit implements Serializable {
     private float price;
 
     @CreationTimestamp
-    private Date fechaCreacion;
+    private Date creationDate;
 
     @UpdateTimestamp
-    private Date fechaActualizacion;
+    private Date updateDate;
 
 
     // getters and setters
@@ -55,39 +55,39 @@ public class Fruit implements Serializable {
         this.price = price;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public Date getFechaActualizacion() {
-        return fechaActualizacion;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setFechaActualizacion(Date fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
 
     // construct
 
-    public Fruit(String type, Long quantity, float price, Date fechaCreacion, Date fechaActualizacion) {
+    public Fruit(String type, Long quantity, float price, Date creationDate, Date updateDate) {
         this.type = type;
         this.quantity = quantity;
         this.price = price;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
     }
 
     //toString method
 
     @Override
     public String toString() {
-        return "Fruit [id=" + id + ", type=" + type + ", quantity=" + quantity + ", price=" + price + ", fechaCreacion="
-                + fechaCreacion + ", fechaActualizacion=" + fechaActualizacion + "]";
+        return "Fruit [id=" + id + ", type=" + type + ", quantity=" + quantity + ", price=" + price + ", creationDate="
+                + creationDate + ", updateDate=" + updateDate + "]";
     }
 
 
