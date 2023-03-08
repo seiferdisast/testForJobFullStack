@@ -1,5 +1,5 @@
 # testForJobFullStack
-Test for full stack job
+Test for full stack job for fruit shop
 
 ## Initialize DB on Postgres 
 
@@ -20,3 +20,18 @@ CREATE DATABASE "ShopFruits"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False; 
 ```
+
+## run back project
+
+* set correct variables in <fruit-shop-back\src\main\resources\application.properties>
+* install dependencies with maven `mvn install`
+* run project with maven `mvn spring-boot:run`
+
+### APIs
+
+* GET http://localhost:8080/fruitcontroller
+* POST http://localhost:8080/fruitcontroller
+* DELETE http://localhost:8080/fruitcontroller/{id}
+* PUT http://localhost:8080/fruitcontroller/{id}
+* GET http://localhost:8080/ordercontroller
+* POST http://localhost:8080/ordercontroller
