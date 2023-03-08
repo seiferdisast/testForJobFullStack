@@ -20,7 +20,7 @@ public class Fruit implements Serializable {
 
     private Long quantity;
     
-    private float price;
+    private Double price;
 
     @CreationTimestamp
     private Date creationDate;
@@ -47,11 +47,11 @@ public class Fruit implements Serializable {
         this.quantity = quantity;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -74,7 +74,7 @@ public class Fruit implements Serializable {
 
     // construct
 
-    public Fruit(String type, Long quantity, float price, Date creationDate, Date updateDate) {
+    public Fruit(String type, Long quantity, Double price, Date creationDate, Date updateDate) {
         this.type = type;
         this.quantity = quantity;
         this.price = price;
