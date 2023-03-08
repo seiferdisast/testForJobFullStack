@@ -9,7 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "fruit_order")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="order_sequence")
