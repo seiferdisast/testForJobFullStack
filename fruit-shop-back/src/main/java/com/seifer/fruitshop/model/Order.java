@@ -16,6 +16,7 @@ public class Order implements Serializable {
     @SequenceGenerator(name="order_sequence", sequenceName="order_sequence", allocationSize=100)
     private Long id;
 
+    @Column(length = 10000)
     private String fruitList;
 
     private Double fullValue;
@@ -26,6 +27,10 @@ public class Order implements Serializable {
     @UpdateTimestamp
     private Date updateDate;
 
+
+    // getters and setters
+
+    
     public String getFruitList() {
         return fruitList;
     }
@@ -58,10 +63,22 @@ public class Order implements Serializable {
         this.updateDate = updateDate;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //contructor methods
+
     public Order(String fruitList, Double fullValue) {
         this.fruitList = fruitList;
         this.fullValue = fullValue;
     }
+
+    //toString method
 
     @Override
     public String toString() {
@@ -70,5 +87,6 @@ public class Order implements Serializable {
     }
 
     public Order(){}
+
     
 }

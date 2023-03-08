@@ -17,50 +17,39 @@ import com.seifer.fruitshop.repositories.FruitRepo;
 @RequestMapping("/ordercontroller")
 public class OrderController {
 
-    @Autowired FruitRepo fruitRepo;
+    @Autowired
+    FruitRepo fruitRepo;
 
     @Autowired
     private OrderRepo orderRepo;
 
     @GetMapping()
-    public ResponseEntity<?> findAll() {
-        try {
-            //TODO Implement Your Logic To Get Data From Service Layer Or Directly From Repository Layer
-            return new ResponseEntity<>("GetAll Results", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public List<Order> getAllFruits() {
+        return orderRepo.findAll();
     }
-
-
-/* [
-{
-"tipo":"manzana",
-"cantidad":2
-},
-{
-"tipo":"pera",
-"cantidad":5
-},
-] 
-*/
 
     @PostMapping()
     public ResponseEntity<?> create(@RequestBody List<OrderRequestBody> orderOfFruit) {
 
+        Double total = 0.0;
+
         for (OrderRequestBody orderRequestBody : orderOfFruit) {
             String typeFruit = orderRequestBody.getType();
             Fruit fruit = fruitRepo.findByType(typeFruit);
+            Double pricePerUnit = fruit.getPrice();
+            total += pricePerUnit * orderRequestBody.getQuantity();
             fruit.setQuantity(fruit.getQuantity() - orderRequestBody.getQuantity());
             fruitRepo.save(fruit);
         }
 
-        return new ResponseEntity<>("orderRepo.save(orderOfFruit)", HttpStatus.OK);
-        
-        /* try {
-            return new ResponseEntity<>(orderRepo.save(orderOfFruit), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        } */
+        if (orderOfFruit.size() > 4) {
+            Double discount = 0.10 * total;
+            total -= discount;
+        }
+
+        Order order = new Order();
+            order.setFruitList(orderOfFruit.toString());
+            order.setFullValue(total);
+        return new ResponseEntity<>(orderRepo.save(order), HttpStatus.OK);
     }
 }

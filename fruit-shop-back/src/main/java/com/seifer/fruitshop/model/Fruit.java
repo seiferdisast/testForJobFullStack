@@ -31,6 +31,7 @@ public class Fruit implements Serializable {
 
     // getters and setters
 
+
     public String getType() {
         return type;
     }
@@ -71,8 +72,10 @@ public class Fruit implements Serializable {
         this.updateDate = updateDate;
     }
 
+    
 
-    // construct
+
+    // constructor methods
 
     public Fruit(String type, Long quantity, Double price, Date creationDate, Date updateDate) {
         this.type = type;
@@ -90,5 +93,13 @@ public class Fruit implements Serializable {
 
     // Better not ask me why this is here...
     public Fruit(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }
